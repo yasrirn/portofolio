@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Portofolio | Yasri</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1724;
+    --card:#0b1220;
+    --accent:#7c5cff;
+    --glass: rgba(255,255,255,0.04);
+    --muted: #9aa4b2;
+    --glass-2: rgba(255,255,255,0.03);
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins',system-ui,Arial,sans-serif;margin:0;background:linear-gradient(180deg,#071024 0%, #081428 60%);color:#e6eef6; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+
+  header{position:fixed;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:linear-gradient(90deg, rgba(12,18,30,0.6), rgba(12,18,30,0.2));backdrop-filter: blur(6px);z-index:50}
+  .logo{display:flex;gap:12px;align-items:center}
+  .logo .mark{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#3ec5ff);display:flex;align-items:center;justify-content:center;font-weight:800;color:#081428;box-shadow:0 6px 30px rgba(124,92,255,0.12)}
+  nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600;transition:color .2s}
+  nav a:hover{color:#fff}
+
+  main{padding-top:96px;max-width:1100px;margin:0 auto;padding-left:22px;padding-right:22px}
+
+  /* Hero */
+  .hero{display:flex;gap:32px;align-items:center;justify-content:space-between;padding:48px 0}
+  .intro{max-width:640px}
+  .intro h1{font-size:44px;line-height:1.02;margin:0 0 12px;color:linear-gradient(90deg,#fff,#ddd)}
+  .intro h1 span{background:linear-gradient(90deg,var(--accent),#3ec5ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .intro p{color:var(--muted);font-size:16px;margin-bottom:18px}
+
+  .cta{display:flex;gap:12px;align-items:center}
+  .btn{background:linear-gradient(90deg,var(--accent),#3ec5ff);border:none;color:#081428;padding:12px 18px;border-radius:12px;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(124,92,255,0.14);transition:transform .15s}
+  .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);font-weight:600}
+  .btn:active{transform:translateY(2px)}
+
+  .hero-visual{width:360px;min-height:280px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:16px;padding:18px;border:1px solid var(--glass-2);box-shadow: 0 12px 40px rgba(3,6,12,0.6);position:relative;overflow:hidden}
+  .card-spark{position:absolute;right:-40px;top:-40px;width:180px;height:180px;background:linear-gradient(135deg, rgba(124,92,255,0.18), rgba(62,197,255,0.09));transform:rotate(20deg);filter:blur(28px);opacity:0.6}
+
+  .profile{display:flex;gap:16px;align-items:center}
+  .avatar{width:92px;height:92px;border-radius:14px;background:linear-gradient(135deg,#fff,#ffd6e9);display:flex;align-items:center;justify-content:center;color:#081428;font-weight:800;font-size:28px;box-shadow:0 10px 30px rgba(12,18,30,0.6)}
+  .meta h3{margin:0 0 6px;font-size:20px}
+  .meta p{margin:0;color:var(--muted);font-size:14px}
+
+  /* sections */
+  section{margin-top:28px;padding:24px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--glass);box-shadow:0 8px 30px rgba(2,6,12,0.6)}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .project{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);transition:transform .25s,box-shadow .25s;cursor:pointer;overflow:hidden}
+  .project:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(2,6,12,0.6)}
+  .project .thumb{height:140px;border-radius:10px;background:linear-gradient(135deg,#1f2937,#111827);display:flex;align-items:flex-end;padding:12px;color:#fff;font-weight:700}
+  .project h4{margin:10px 0 6px}
+  .project p{color:var(--muted);font-size:14px;margin:0}
+
+  .about p{color:var(--muted);line-height:1.6}
+  .skills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .skill{padding:8px 10px;background:rgba(255,255,255,0.03);border-radius:10px;font-weight:600;color:var(--muted);font-size:13px}
+
+  /* contact */
+  .contact-grid{display:flex;gap:12px;flex-wrap:wrap}
+  .contact-card{flex:1 1 240px;padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
+  .contact-card a{color:var(--muted);text-decoration:none;font-weight:700;display:inline-block;margin-top:6px}
+
+  footer{padding:40px 22px;text-align:center;color:var(--muted)}
+
+  /* responsive */
+  @media (max-width:900px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .hero{flex-direction:column-reverse;align-items:flex-start}
+    .hero-visual{width:100%}
+  }
+  @media (max-width:600px){
+    .grid{grid-template-columns:1fr}
+    nav a{display:none}
+    header{padding:12px}
+    .intro h1{font-size:32px}
+  }
+
+  /* small animations */
+  @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+  .avatar{animation:floaty 4s ease-in-out infinite}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">
+    <div class="mark">Y</div>
+    <div>
+      <div style="font-weight:700">Vijay Yasri</div>
+      <div style="font-size:12px;color:var(--muted)">Editor & Designer</div>
+    </div>
+  </div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="intro">
+      <h1>Hi, saya <span>Vijay Yasri</span></h1>
+      <p>Video Editor & Designer yang mengubah ide menjadi visual yang menarik, dinamis, dan berkesan. Fokus pada detail, ritme, dan kualitas estetika.</p>
+      <div class="cta">
+        <button class="btn" onclick="document.querySelector('#projects').scrollIntoView({behavior:'smooth'})">Lihat Proyek</button>
+        <button class="btn secondary" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">Hubungi Saya</button>
+      </div>
+
+      <div style="margin-top:22px;display:flex;gap:10px;align-items:center">
+        <div style="width:92px;height:56px;background:linear-gradient(90deg,#fff,#ffd6e9);border-radius:10px;padding:8px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start">
+          <div style="font-weight:800;color:#081428">200+</div>
+          <div style="font-size:11px;color:var(--muted)">Jam coding</div>
+        </div>
+        <div style="width:92px;height:56px;background:linear-gradient(90deg,#ffe7f2,#fff0f7);border-radius:10px;padding:8px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start">
+          <div style="font-weight:800;color:#081428">15</div>
+          <div style="font-size:11px;color:var(--muted)">Proyek</div>
+        </div>
+        <div style="width:92px;height:56px;background:linear-gradient(90deg,#dcefff,#e7fff8);border-radius:10px;padding:8px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start">
+          <div style="font-weight:800;color:#081428">5</div>
+          <div style="font-size:11px;color:var(--muted)">Klien</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="card-spark"></div>
+      <div class="profile">
+        <div class="avatar">Y</div>
+        <div class="meta">
+          <h3>Yasri</h3>
+          <p>Editor Video • Designer</p>
+        </div>
+      </div>
+
+      <div style="margin-top:18px;display:flex;gap:10px">
+        <div style="flex:1;background:linear-gradient(90deg,#0b1220,#0f1724);padding:12px;border-radius:12px;display:flex;flex-direction:column">
+          <div style="font-size:12px;color:var(--muted)">Latest</div>
+          <div style="font-weight:700;margin-top:6px">Website eCommerce</div>
+          <div style="color:var(--muted);font-size:13px;margin-top:8px">UI redesign dan optimasi performa.</div>
+        </div>
+        <div style="width:120px;background:linear-gradient(90deg,#07122a,#0b1220);padding:12px;border-radius:12px;display:flex;flex-direction:column;justify-content:center;align-items:center">
+          <div style="font-weight:800">React</div>
+          <div style="font-size:12px;color:var(--muted)">SPA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about" style="margin-top:12px">
+      <p>Saya adalah Video Editor dan Designer yang berfokus pada pembuatan konten visual yang menarik dan profesional. Saya mengolah video dengan memperhatikan alur, ritme, warna, dan audio agar menghasilkan karya yang dinamis dan engaging. Dalam proses kreatif, saya terbiasa menggunakan CorelDRAW, CapCut, dan Canva untuk mendukung hasil desain dan editing yang estetik serta komunikatif.</p>
+      <div class="skills">
+        <div class="skill">Capcut</div><div class="skill">Canva</div><div class="skill">Corel Draw</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid" style="margin-top:12px">
+      <div class="project" img src="ulang tahun bisdig Nanda.png">
+        <div class="thumb">E-Commerce Dashboard</div>
+        <h4>E-Commerce Dashboard</h4>
+        <p>Admin panel dengan grafik interaktif dan laporan.</p>
+      </div>
+      <div class="project" onclick="openProject(2)">
+        <div class="thumb">Portfolio Website</div>
+        <h4>Portfolio Website</h4>
+        <p>Desain modern, animasi halus, dan aksesibilitas.</p>
+      </div>
+      <div class="project" onclick="openProject(3)">
+        <div class="thumb">Landing Page</div>
+        <h4>Landing Page</h4>
+        <p>Optimalisasi SEO & performa, konversi tinggi.</p>
+      </div>
+      <div class="project" onclick="openProject(4)">
+        <div class="thumb">Chat App</div>
+        <h4>Real-Time Chat</h4>
+        <p>WebSocket realtime dengan UI sederhana.</p>
+      </div>
+      <div class="project" onclick="openProject(5)">
+        <div class="thumb">Blog CMS</div>
+        <h4>Blog CMS</h4>
+        <p>Admin friendly dan fitur publikasi.</p>
+      </div>
+      <div class="project" onclick="openProject(6)">
+        <div class="thumb">Mini Game</div>
+        <h4>Mini Game</h4>
+        <p>Game HTML5 interaktif untuk promosi.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-grid" style="margin-top:12px">
+      <div class="contact-card">
+        <div style="font-weight:800">Let's work together</div>
+        <div style="color:var(--muted);margin-top:6px">Email</div>
+        <a href="mailto:yasri@example.com">yasri@example.com</a>
+      </div>
+      <div class="contact-card">
+        <div style="font-weight:800">Find me</div>
+        <div style="color:var(--muted);margin-top:6px">LinkedIn</div>
+        <a href="#" target="_blank">linkedin.com/in/yasri</a>
+      </div>
+      <div class="contact-card">
+        <div style="font-weight:800">Message</div>
+        <div style="color:var(--muted);margin-top:6px">WhatsApp</div>
+        <a href="https://wa.me/6281234567890" target="_blank">Chat via WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="margin-top:22px">
+    <div style="color:var(--muted)">© 2025 Yasri. Built with ❤️</div>
+  </footer>
+</main>
+
+<script>
+  function openProject(id){
+    const titles = {
+      1:'E-Commerce Dashboard',
+      2:'Portfolio Website',
+      3:'Landing Page',
+      4:'Real-Time Chat',
+      5:'Blog CMS',
+      6:'Mini Game'
+    };
+    alert('Buka detail project: ' + titles[id]);
+  }
+</script>
+</body>
+</html>
